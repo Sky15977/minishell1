@@ -1,0 +1,49 @@
+        Minishell 1    39 - 50 / 188
+.
+..
+setenv PATH /bin >>> pwd
+cd /bin/ls
+
+--------------------------REVOIR--------------------------
+voir dans la boucle dans get_access l-33
+
+MYSH: .: Permission denied.    return value 1
+TCSH: /user/bin/.: Permission denied.    return value 1
+
+MYSH: ..: Permission denied.    return value 1
+TCSH: /user/bin/..: Permission denied.    return value 1
+--------------------------REVOIR--------------------------
+
+--------------------------CHANGED--------------------------
+div_zero ret 1 au lieu de 136
+seg-fault ret 1 au lieu de 139
+
+MYSH: bin/ls: Permission denied.    return value 1
+TCSH: bin/ls: Command not found.    return value 1
+
+MYSH: ../bin/ls: Permission denied.    return value 1
+TCSH: ../bin/ls: Command not found.    return value 1
+
+MYSH: /user/local/bin/../: Permission denied.    return value 1
+TCSH: ../: Permission denied.    return value 1
+
+MYSH: ./: Command not found.    return value 0
+TCSH: ./: Permission denied.    return value 1
+
+MYSH: ./lib: Permission denied.    return value 0
+TCSH: ./lib: Permission denied.    return value 1
+
+MYSH: ./bin/ls: Command not found.    return value 0
+TCSH: ./bin/ls: Command not found.    return value 1
+
+cd toto tata
+MYSH: toto: No such file or directory.    return value 1
+TCSH: cd: Too many arguments.    return value 1
+
+@e   1e   A@   a1
+setenv _toto tata
+MYSH: doit fonctionner normalement
+
+setenv 8toto tata
+TCSH: setenv: Variable name must begin with a letter.    return value 1
+--------------------------CHANGED--------------------------
